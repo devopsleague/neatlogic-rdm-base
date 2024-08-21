@@ -17,13 +17,15 @@ package neatlogic.framework.rdm.dto;
 
 import neatlogic.framework.asynchronization.threadlocal.UserContext;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
 public class IssueConditionVo extends IssueVo {
+    private Long issueId;
     private List<String> startDate;
     private List<String> endDate;
-
+    private String createUser;
     private List<String> createDate;
 
     private List<Long> status;
@@ -124,6 +126,27 @@ public class IssueConditionVo extends IssueVo {
 
     public void setSortList(List<IssueSortVo> sortList) {
         this.sortList = sortList;
+    }
+
+    public Long getIssueId() {
+        return issueId;
+    }
+
+    public void setIssueId(Long issueId) {
+        this.issueId = issueId;
+    }
+
+    @Override
+    public String getCreateUser() {
+        if (StringUtils.isNotBlank(createUser)) {
+            createUser = createUser.replace("user#", "");
+        }
+        return createUser;
+    }
+
+    @Override
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser;
     }
 
     public List<String> getUserIdList() {

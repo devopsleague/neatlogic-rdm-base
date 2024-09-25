@@ -442,7 +442,7 @@ public class IssueVo extends BasePageVo {
         this.catalogRht = catalogRht;
     }
 
-    public final Set<String> getWordList() {
+    public final List<String> getWordList() {
         if (StringUtils.isNotBlank(this.getKeyword())) {
             return FullTextIndexUtil.sliceKeyword(this.getKeyword());
         }
